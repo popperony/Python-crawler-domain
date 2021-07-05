@@ -7,6 +7,7 @@ import colorama
 colorama.init()
 GREEN = colorama.Fore.GREEN
 BLUE = colorama.Fore.BLUE
+RED = colorama.Fore.RED
 RESET = colorama.Fore.RESET
 
 # множество для сбора только уникальных ссылок
@@ -33,7 +34,12 @@ def get_all_website_links(url):
     urls = set()
     # доменное имя без указания протокола
     domain_name = urlparse(url).netloc
-    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    try:
+        global soup
+        soup = BeautifulSoup(requests.get(url).content, "html.parser", from_encoding="iso-8859-1")
+    except Exception as exc:
+        print(f'{RED} {exc} {RESET}')
+
     for a_tag in soup.findAll("a"):
         href = a_tag.attrs.get("href")
         if href == "" or href is None:
@@ -65,6 +71,7 @@ def get_all_website_links(url):
             internal_urls.add(href)
     return urls
 
+        
 
 def crawl(url, max_urls=5):
     """

@@ -5,7 +5,7 @@ import link
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description="Link Extractor Tool with Python")
+    parser = argparse.ArgumentParser()
     parser.add_argument("url", help="The URL to extract links from.")
     parser.add_argument("-m", "--max-urls", help="Number of max URLs to crawl, default is 10.", default=10, type=int)
 
