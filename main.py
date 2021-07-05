@@ -26,7 +26,7 @@ if __name__ == '__main__':
     with open(f"output/{domain_name}_links.txt", "w", encoding='utf-8') as file:  # NOQA E501
         for i in all_urls:
             print(i.strip(), file=file)
-
+    # Счетчики
     # print("[+] General Internal links:", len(parser_link.internal_urls))
     # print("[+] General External links:", len(parser_link.external_urls))
     # print("[+] Javascript Internal links:", len(parser_link_js.internal_urls_js))  # NOQA E501

@@ -6,6 +6,11 @@ from requests_html import HTMLSession
 from seleniumwire import webdriver
 from urllib.parse import urlparse, urljoin
 
+# для начала работы необходимо указать драйвер под операционную систему
+# для Linux './drivers/geckodriver'
+# для win10 './drivers/geckodriver.exe'
+osdriver = r'./drivers/geckodriver.exe'
+regexp = r"https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/;=]*)"  # NOQA E501
 
 colorama.init()
 GREEN = colorama.Fore.GREEN
@@ -22,8 +27,6 @@ total_urls_visited_js = 0
 internal_urls_js = set()
 # внешние ссылки - на другие сайты
 external_urls_js = set()
-
-regexp = r"https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/;=]*)"  # NOQA E501
 
 
 # проверяем в url правильную схему и домен
@@ -57,7 +60,7 @@ def chek_url(href, domain_name):
 
 def get_all_website_links(url):
     domain_name = urlparse(url).netloc
-    firefoxdriver = r'./drivers/geckodriver.exe'
+    firefoxdriver = osdriver
     options2 = webdriver.FirefoxOptions()
     options2.headless = True
     # options2 = webdriver.ChromeOptions()
