@@ -1,0 +1,2 @@
+detectportal.firefox.com
+https://www.iana.org/domains/example
