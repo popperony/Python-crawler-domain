@@ -5,9 +5,8 @@ import colorama
 
 # определяем цвета для внешних и внутренних ссылок
 colorama.init()
-
 GREEN = colorama.Fore.GREEN
-GRAY = colorama.Fore.LIGHTBLACK_EX
+BLUE = colorama.Fore.BLUE
 RESET = colorama.Fore.RESET
 
 # множество для сбора только уникальных ссылок
@@ -55,7 +54,7 @@ def get_all_website_links(url):
             # если домена нет в ссылке, значит она внешняя
             if urlparse(href).netloc not in all_urls:
                 # печатаем серым цветом и сохраняем в набор (наше множество)
-                print(f"{GRAY}[!] External link: {href}{RESET}")
+                print(f"{BLUE}[!] External link: {href}{RESET}")
                 all_urls.add(href)
                 external_urls.add(href)
             continue

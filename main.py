@@ -1,14 +1,7 @@
 import argparse
 from urllib.parse import urlparse
-
 import link
 # import link_js
-
-# # внутренние ссылки - на страницы внутри сайта
-# internal_urls = set()
-# # внешние ссылки - на другие сайты
-# external_urls = set()
-
 
 if __name__ == '__main__':
 
@@ -34,7 +27,7 @@ if __name__ == '__main__':
         for internal_link in all_urls:
             print(internal_link.strip(), file=f)
 
-    print("[+] Total Internal links:", len(internal_urls))
-    print("[+] Total External links:", len(external_urls))
-    print("[+] Total URLs:", len(external_urls) + len(internal_urls))
+    print("[+] Total Internal links:", len(link.internal_urls))
+    print("[+] Total External links:", len(link.external_urls))
+    print("[+] Total URLs:", len(link.external_urls) + len(link.internal_urls))
     print("[+] Total crawled URLs:", max_urls)
